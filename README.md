@@ -32,3 +32,11 @@ The goal is to build a complete end-to-end workflow using Python and Tableau, fr
 
 Raw CSV files are stored locally and are not uploaded to GitHub.
 This repository will be updated weekly throughout the internship.
+
+## Progress Update (June 2026)
+
+- Completed historical data collection from 202401 to 202605
+- Merged full listings dataset (919,294 rows)
+- Merged full sold dataset (640,050 rows)
+- Built initial Tableau Public test dashboard
+- Preparing market trend visualizations for weekly team review
