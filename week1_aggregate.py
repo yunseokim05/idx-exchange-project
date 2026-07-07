@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-months = [f"{y}{m:02d}" for y in [2024, 2025] for m in range(1, 13)] + [f"2026{m:02d}" for m in range(1, 6)]
+months = [f"{y}{m:02d}" for y in [2024, 2025] for m in range(1, 13)] + [f"2026{m:02d}" for m in range(1, 7)]
 
 def pick_file(prefix, month):
     normal = Path(f"{prefix}{month}.csv")
@@ -33,3 +33,4 @@ listings.to_csv("listings.csv", index=False)
 sold.to_csv("sold.csv", index=False)
 
 print("Done: saved listings.csv and sold.csv")
+
