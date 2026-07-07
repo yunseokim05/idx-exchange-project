@@ -2,136 +2,190 @@
 
 ## Overview
 
-This project is part of my Data Analyst Internship at IDX Exchange.
+This project analyzes California MLS residential real estate data using Python and Tableau.
 
-The objective is to build an end-to-end real estate analytics workflow using Python and Tableau by collecting, cleaning, validating, and analyzing MLS listing and sold property datasets.
+The project builds an end-to-end workflow that includes:
+
+- Monthly MLS data extraction
+- Dataset aggregation
+- Data validation
+- Exploratory Data Analysis (EDA)
+- Mortgage rate enrichment using FRED
+- Dashboard preparation for Tableau
 
 ---
 
-# Project Objectives
+## Objectives
 
 - Extract monthly MLS Listing and Sold datasets
-- Maintain updated master datasets (202401–202605)
-- Validate and clean data quality
-- Perform exploratory data analysis (EDA)
-- Merge external mortgage rate data (FRED)
-- Build Tableau dashboards for housing market analysis
+- Aggregate all monthly datasets into master files
+- Filter Residential properties only
+- Validate dataset quality
+- Perform exploratory data analysis
+- Merge external mortgage rate data
+- Prepare datasets for Tableau dashboards
 
 ---
 
-# Repository Structure
+## Project Structure
 
 | File | Description |
 |------|-------------|
-| `crmls_listed.py` | Download monthly Listing datasets |
-| `crmls_sold.py` | Download monthly Sold datasets |
-| `week1_aggregate.py` | Aggregate monthly CSV files and filter Residential properties |
-| `week2_validation.py` | Validate dataset structure and missing values |
-| `week3_eda.py` | Exploratory Data Analysis with descriptive statistics and visualizations |
-| `week3_mortgage_merge.py` | Merge monthly mortgage rates from FRED |
-| `README.md` | Project documentation |
+| crmls_listed.py | Download monthly Listing datasets |
+| crmls_sold.py | Download monthly Sold datasets |
+| week1_aggregate.py | Merge monthly CSV files and filter Residential properties |
+| week2_validation.py | Dataset validation and missing value analysis |
+| week3_eda.py | Exploratory Data Analysis |
+| week3_mortgage_merge.py | Merge monthly mortgage rates from FRED |
+| README.md | Project documentation |
 
 ---
 
-# Workflow
+## Data Coverage
 
-### Week 0
-- Download monthly MLS datasets
-- Maintain historical data archive
+Current MLS coverage:
 
-### Week 1
-- Aggregate monthly Listing and Sold files
-- Filter Residential properties
-- Generate master datasets:
-  - `listings.csv`
-  - `sold.csv`
+**January 2024 – June 2026**
 
-### Week 2
-- Validate datasets
-- Check:
-  - Row counts
-  - Column counts
-  - PropertyType distribution
-  - Missing values
+Datasets included:
 
-### Week 3
-- Exploratory Data Analysis
-- Summary statistics
-- Median / Mean
-- Missing value analysis
-- Histograms
-- Boxplots
-- Outlier detection
-- Property type distribution
-- County median price analysis
-- Above / Below list price analysis
-- Date consistency check
-
-### Mortgage Integration
-- Download 30-Year Fixed Mortgage Rate data from FRED
-- Convert weekly data to monthly averages
-- Merge mortgage rates into MLS datasets
+- Listings
+- Sold Transactions
 
 ---
 
-# Current Dataset
+## Current Dataset Summary
 
 ### Listings
 
 - Residential properties only
-- **585,954 records**
+- **610,035 records**
 - **84 columns**
 
 ### Sold
 
 - Residential properties only
-- **430,481 records**
+- **448,022 records**
 - **84 columns**
 
-Coverage:
-
-- January 2024
-- through
-- May 2026
-
 ---
 
-# Technologies
+## Workflow
 
-- Python
-- Pandas
-- Matplotlib
-- Git
-- GitHub
-- Tableau Public
+### Week 0
 
----
+- Download monthly MLS files
+- Understand MLS metadata
+- Review extraction scripts
 
-# Progress
+### Week 1
 
-## ✅ Completed
+- Combine all monthly CSV files
+- Filter Residential properties
+- Export
 
-- Historical MLS extraction (202401–202605)
-- Listing aggregation
-- Sold aggregation
-- Residential filtering
-- Data validation
+```
+listings.csv
+sold.csv
+```
+
+### Week 2
+
+- Dataset validation
+- Property type verification
 - Missing value analysis
+- Null percentage review
+
+### Week 3
+
 - Exploratory Data Analysis
-- Mortgage rate integration
-- GitHub project organization
+- Distribution analysis
+- Outlier inspection
+- Market summary statistics
+- Mortgage rate enrichment (FRED)
 
 ---
 
-# Future Work
+## Week 3 Analysis
+
+EDA includes:
+
+- ClosePrice
+- ListPrice
+- OriginalListPrice
+- LivingArea
+- LotSizeAcres
+- BedroomsTotal
+- BathroomsTotalInteger
+- DaysOnMarket
+- YearBuilt
+
+Generated:
+
+- Summary statistics
+- Missing value counts
+- Percentiles
+- Histograms
+- Boxplots
+
+Additional market analysis:
+
+- Average vs Median Close Price
+- Days on Market distribution
+- Sold Above / Below List %
+- Date consistency validation
+- Top counties by median Close Price
+
+---
+
+## Mortgage Rate Enrichment
+
+Source:
+
+Federal Reserve Economic Data (FRED)
+
+Series:
+
+MORTGAGE30US
+
+Workflow:
+
+- Download weekly mortgage rates
+- Convert to monthly averages
+- Merge with Listings dataset
+- Merge with Sold dataset
+- Validate merge completeness
+
+Missing mortgage rates:
+
+- Listings: **0**
+- Sold: **0**
+
+---
+
+## Current Progress
+
+✅ Week 0 Complete
+
+✅ Week 1 Complete
+
+✅ Week 2 Complete
+
+✅ Week 3 Complete
+
+Current coverage:
+
+**202401 – 202606**
+
+---
+
+## Next Steps
 
 - Feature engineering
+- Data cleaning
 - Tableau dashboards
-- Housing market trend analysis
 - Predictive modeling
-- Weekly automated data refresh
-
----
+- Market trend analysis
 
 # Notes
 
