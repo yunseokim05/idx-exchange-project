@@ -135,6 +135,6 @@ Coverage:
 
 # Notes
 
-Raw MLS datasets are stored locally and are not uploaded to GitHub due to file size.
+Raw MLS datasets are stored locally and are not uploaded to GitHub.
 
 This repository contains the Python workflow and project documentation developed throughout the internship.
