@@ -163,6 +163,39 @@ Missing mortgage rates:
 
 ---
 
+## Week 4 — Data Cleaning & Preparation
+
+Implemented:
+
+- Date column conversion to `datetime`
+- Numeric datatype conversion
+- Invalid value flagging
+- Date consistency validation
+- Geographic data quality validation
+- Dataset quality summaries
+- Export cleaned datasets
+
+Generated validation flags:
+
+- `invalid_closeprice_flag`
+- `invalid_livingarea_flag`
+- `negative_dom_flag`
+- `negative_bedrooms_flag`
+- `negative_bathrooms_flag`
+- `listing_after_close_flag`
+- `purchase_after_close_flag`
+- `negative_timeline_flag`
+- `missing_coordinate_flag`
+- `zero_coordinate_flag`
+- `positive_longitude_flag`
+- `out_of_state_coordinate_flag`
+
+Outputs:
+
+- `cleaned_listings.csv`
+- `cleaned_sold.csv`
+---
+
 ## Current Progress
 
 ✅ Week 0 Complete
@@ -172,6 +205,8 @@ Missing mortgage rates:
 ✅ Week 2 Complete
 
 ✅ Week 3 Complete
+
+✅ Week 4 Complete
 
 Current coverage:
 
