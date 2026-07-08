@@ -2,67 +2,59 @@
 
 ## Overview
 
-This project analyzes California MLS residential real estate data using Python and Tableau.
+This project is part of my Data Analyst Internship at IDX Exchange.
 
-The project builds an end-to-end workflow that includes:
-
-- Monthly MLS data extraction
-- Dataset aggregation
-- Data validation
-- Exploratory Data Analysis (EDA)
-- Mortgage rate enrichment using FRED
-- Dashboard preparation for Tableau
+The objective is to build an end-to-end real estate analytics pipeline using California MLS residential property data. The project covers data extraction, aggregation, validation, exploratory data analysis (EDA), data cleaning, and mortgage rate enrichment to prepare analysis-ready datasets for Tableau dashboards and market intelligence.
 
 ---
 
-## Objectives
+## Project Objectives
 
 - Extract monthly MLS Listing and Sold datasets
-- Aggregate all monthly datasets into master files
-- Filter Residential properties only
-- Validate dataset quality
-- Perform exploratory data analysis
-- Merge external mortgage rate data
-- Prepare datasets for Tableau dashboards
+- Aggregate monthly datasets into master files
+- Validate data quality
+- Perform exploratory data analysis (EDA)
+- Clean and standardize MLS data
+- Enrich datasets with 30-Year Fixed Mortgage Rates from FRED
+- Prepare clean datasets for Tableau dashboard development
 
 ---
 
-## Project Structure
+## Repository Structure
 
 | File | Description |
 |------|-------------|
-| crmls_listed.py | Download monthly Listing datasets |
-| crmls_sold.py | Download monthly Sold datasets |
-| week1_aggregate.py | Merge monthly CSV files and filter Residential properties |
-| week2_validation.py | Dataset validation and missing value analysis |
-| week3_eda.py | Exploratory Data Analysis |
-| week3_mortgage_merge.py | Merge monthly mortgage rates from FRED |
-| README.md | Project documentation |
+| `crmls_listed.py` | Download monthly MLS Listing datasets |
+| `crmls_sold.py` | Download monthly MLS Sold datasets |
+| `week1_aggregate.py` | Combine monthly CSV files and filter Residential properties |
+| `week2_validation.py` | Dataset validation and missing value analysis |
+| `week3_eda.py` | Exploratory Data Analysis (EDA) |
+| `week3_mortgage_merge.py` | Merge monthly mortgage rates from FRED |
+| `week4_cleaning.py` | Data cleaning, validation flags, datatype conversion, geographic and timeline quality checks |
+| `README.md` | Project documentation |
 
 ---
 
-## Data Coverage
-
-Current MLS coverage:
+# Data Coverage
 
 **January 2024 – June 2026**
 
 Datasets included:
 
-- Listings
-- Sold Transactions
+- MLS Listings
+- MLS Sold Transactions
 
 ---
 
-## Current Dataset Summary
+# Current Dataset Summary
 
-### Listings
+## Listings
 
 - Residential properties only
 - **610,035 records**
 - **84 columns**
 
-### Sold
+## Sold
 
 - Residential properties only
 - **448,022 records**
@@ -70,96 +62,64 @@ Datasets included:
 
 ---
 
-## Workflow
+# Project Workflow
 
-### Week 0
+## Week 0 — MLS Pipeline Orientation
 
-- Download monthly MLS files
-- Understand MLS metadata
-- Review extraction scripts
+- Download monthly MLS datasets
+- Review Trestle Property Metadata
+- Understand MLS extraction workflow
 
-### Week 1
+## Week 1 — Dataset Aggregation
 
-- Combine all monthly CSV files
+- Combine monthly Listing datasets
+- Combine monthly Sold datasets
 - Filter Residential properties
-- Export
+- Export:
+  - `listings.csv`
+  - `sold.csv`
 
-```
-listings.csv
-sold.csv
-```
+## Weeks 2–3 — Validation & Exploratory Data Analysis
 
-### Week 2
+Performed:
 
-- Dataset validation
-- Property type verification
+- Dataset structure validation
+- Row and column verification
+- Property type validation
 - Missing value analysis
-- Null percentage review
-
-### Week 3
-
-- Exploratory Data Analysis
-- Distribution analysis
-- Outlier inspection
-- Market summary statistics
-- Mortgage rate enrichment (FRED)
-
----
-
-## Week 3 Analysis
-
-EDA includes:
-
-- ClosePrice
-- ListPrice
-- OriginalListPrice
-- LivingArea
-- LotSizeAcres
-- BedroomsTotal
-- BathroomsTotalInteger
-- DaysOnMarket
-- YearBuilt
-
-Generated:
-
-- Summary statistics
-- Missing value counts
-- Percentiles
+- High-null column identification
+- Numeric distribution summaries
 - Histograms
 - Boxplots
+- Percentile analysis
+- Outlier inspection
 
 Additional market analysis:
 
-- Average vs Median Close Price
+- Average vs. Median Close Price
 - Days on Market distribution
-- Sold Above / Below List %
+- Homes sold above vs. below list price
 - Date consistency validation
-- Top counties by median Close Price
+- County median price analysis
 
 ---
 
 ## Mortgage Rate Enrichment
 
-Source:
-
-Federal Reserve Economic Data (FRED)
-
-Series:
-
-MORTGAGE30US
+Fetched the **30-Year Fixed Mortgage Rate (MORTGAGE30US)** from the Federal Reserve (FRED).
 
 Workflow:
 
 - Download weekly mortgage rates
-- Convert to monthly averages
-- Merge with Listings dataset
-- Merge with Sold dataset
+- Convert weekly observations to monthly averages
+- Create Year-Month keys
+- Merge onto Listings and Sold datasets
 - Validate merge completeness
 
-Missing mortgage rates:
+Validation Results:
 
-- Listings: **0**
-- Sold: **0**
+- Listings missing mortgage rates: **0**
+- Sold missing mortgage rates: **0**
 
 ---
 
@@ -194,34 +154,53 @@ Outputs:
 
 - `cleaned_listings.csv`
 - `cleaned_sold.csv`
+
 ---
 
-## Current Progress
+# Technologies
+
+- Python
+- Pandas
+- Matplotlib
+- Git
+- GitHub
+- Tableau Public
+
+---
+
+# Current Progress
 
 ✅ Week 0 Complete
 
 ✅ Week 1 Complete
 
-✅ Week 2 Complete
+✅ Weeks 2–3 Complete
 
-✅ Week 3 Complete
+✅ Mortgage Rate Enrichment Complete
 
 ✅ Week 4 Complete
 
-Current coverage:
+Current MLS Coverage:
 
 **202401 – 202606**
 
 ---
 
-## Next Steps
+# Next Steps
 
-- Feature engineering
-- Data cleaning
-- Tableau dashboards
-- Predictive modeling
-- Market trend analysis
+- Week 5: Additional data preparation
+- Week 6: Feature engineering
+- Market metrics
+- Tableau dashboard development
+- Housing market analysis
 
+---
+
+# Notes
+
+Large MLS datasets are maintained locally and are not uploaded to GitHub because of file size limitations.
+
+This repository contains the complete Python workflow developed during the IDX Exchange Data Analyst Internship.
 # Notes
 
 Raw MLS datasets are stored locally and are not uploaded to GitHub.
