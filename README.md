@@ -198,11 +198,6 @@ Current MLS Coverage:
 
 # Notes
 
-Large MLS datasets are maintained locally and are not uploaded to GitHub because of file size limitations.
-
-This repository contains the complete Python workflow developed during the IDX Exchange Data Analyst Internship.
-# Notes
-
 Raw MLS datasets are stored locally and are not uploaded to GitHub.
 
 This repository contains the Python workflow and project documentation developed throughout the internship.
