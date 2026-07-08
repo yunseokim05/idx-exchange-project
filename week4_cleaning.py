@@ -1,6 +1,6 @@
 import pandas as pd
 
-# Load current residential datasets
+# Load the Residential Listings and Sold datasets generated in Week 1.
 listings = pd.read_csv("listings.csv", low_memory=False)
 sold = pd.read_csv("sold.csv", low_memory=False)
 
@@ -20,7 +20,8 @@ def clean_dataset(df, dataset_name):
     print(f"CLEANING {dataset_name.upper()}")
     print("=" * 60)
 
-    # Date columns
+    # Convert date columns to datetime format so timeline validation
+    # and time-based analysis can be performed consistently.
     date_cols = [
         "CloseDate",
         "PurchaseContractDate",
@@ -32,7 +33,8 @@ def clean_dataset(df, dataset_name):
         if col in df.columns:
             df[col] = pd.to_datetime(df[col], errors="coerce")
 
-    # Numeric columns
+    # Convert key analytical fields to numeric data types.
+    # Invalid values are converted to NaN instead of causing errors.    
     numeric_cols = [
         "ClosePrice",
         "ListPrice",
@@ -50,7 +52,9 @@ def clean_dataset(df, dataset_name):
         if col in df.columns:
             df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    # Invalid value flags
+    # Flag invalid numeric values rather than deleting records.
+    # This preserves the original MLS data while identifying
+    # records that require additional review.
     if "ClosePrice" in df.columns:
         df["invalid_closeprice_flag"] = df["ClosePrice"] <= 0
 
@@ -66,7 +70,15 @@ def clean_dataset(df, dataset_name):
     if "BathroomsTotalInteger" in df.columns:
         df["negative_bathrooms_flag"] = df["BathroomsTotalInteger"] < 0
 
-    # Date consistency flags
+    # Validate the logical order of MLS transaction dates.
+    # Expected order:
+    # ListingContractDate
+    #      ↓
+    # PurchaseContractDate
+    #      ↓
+    # CloseDate
+    #
+    # Any records violating this sequence are flagged.
     if "ListingContractDate" in df.columns and "CloseDate" in df.columns:
         df["listing_after_close_flag"] = (
             df["ListingContractDate"].notna()
@@ -97,7 +109,12 @@ def clean_dataset(df, dataset_name):
             )
         )
 
-    # Geographic quality flags
+    # Validate coordinate quality.
+    # Checks include:
+        # - Missing coordinates
+        # - Zero coordinates
+        # - Positive longitude values
+        # - Coordinates outside California
     if "Latitude" in df.columns and "Longitude" in df.columns:
         df["missing_coordinate_flag"] = (
             df["Latitude"].isna() | df["Longitude"].isna()
@@ -121,7 +138,8 @@ def clean_dataset(df, dataset_name):
             )
         )
 
-    # Print flag counts
+    # Summarize all quality flags generated during cleaning.
+    # These counts document the overall quality of the dataset.
     flag_cols = [col for col in df.columns if col.endswith("_flag")]
 
     print("\nFlag Counts")
@@ -141,12 +159,18 @@ def clean_dataset(df, dataset_name):
 cleaned_listings = clean_dataset(listings, "listings")
 cleaned_sold = clean_dataset(sold, "sold")
 
-# Save cleaned datasets
+# Save cleaned, analysis-ready datasets for downstream
+# feature engineering, Tableau dashboards, and market analysis.
 cleaned_listings.to_csv("cleaned_listings.csv", index=False)
 cleaned_sold.to_csv("cleaned_sold.csv", index=False)
 
 print("\n" + "=" * 60)
 print("WEEK 4 CLEANING COMPLETE")
 print("=" * 60)
+
+# Cleaning complete.
+# No original records were removed during this step.
+# Quality issues are preserved through flag columns for
+# transparency and future analysis.
 print("Saved cleaned_listings.csv")
 print("Saved cleaned_sold.csv")
