@@ -4,7 +4,7 @@
 
 This project is part of my Data Analyst Internship at IDX Exchange.
 
-The objective is to build an end-to-end real estate analytics pipeline using California MLS residential property data. The project covers data extraction, aggregation, validation, exploratory data analysis (EDA), mortgage rate enrichment, and data cleaning to prepare analysis-ready datasets for Tableau dashboards and market intelligence.
+The objective is to build an end-to-end real estate analytics pipeline using California MLS residential property data. The project covers data extraction, aggregation, validation, exploratory data analysis (EDA), mortgage rate enrichment, data cleaning, feature engineering, and market metric development to prepare analysis-ready datasets for Tableau dashboards and market intelligence.
 
 ---
 
@@ -14,10 +14,11 @@ The objective is to build an end-to-end real estate analytics pipeline using Cal
 - Aggregate monthly datasets into master files
 - Filter Residential properties only
 - Validate dataset quality
-- Perform exploratory data analysis (EDA)
+- Perform exploratory data analysis
 - Enrich datasets with 30-Year Fixed Mortgage Rates from FRED
 - Clean and standardize MLS data
-- Prepare analysis-ready datasets for feature engineering and Tableau dashboard development
+- Engineer housing market metrics
+- Prepare analysis-ready datasets for Tableau dashboard development
 
 ---
 
@@ -29,9 +30,10 @@ The objective is to build an end-to-end real estate analytics pipeline using Cal
 | `crmls_sold.py` | Download monthly MLS Sold datasets |
 | `week1_aggregate.py` | Combine monthly CSV files and filter Residential properties |
 | `week2_validation.py` | Dataset validation and missing value analysis |
-| `week3_eda.py` | Exploratory Data Analysis (EDA) |
+| `week3_eda.py` | Exploratory Data Analysis |
 | `week3_mortgage_merge.py` | Merge monthly mortgage rates from FRED |
 | `week4_cleaning.py` | Weeks 4–5 data cleaning, datatype conversion, validation flags, and geographic and timeline quality checks |
+| `week6_feature_engineering.py` | Feature engineering, market metrics, and segmented county analysis |
 | `README.md` | Project documentation |
 
 ---
@@ -61,7 +63,7 @@ Datasets included:
 - **448,022 records**
 - **84 original columns**
 
-Additional validation flag columns are added during the Weeks 4–5 cleaning process.
+Additional validation and engineered feature columns are added during the cleaning and feature engineering stages.
 
 ---
 
@@ -216,10 +218,55 @@ No rows were permanently removed during this phase. Data-quality issues were pre
 
 ---
 
+## Week 6 — Feature Engineering and Market Metrics
+
+Created the housing market metrics required for downstream analysis and Tableau development.
+
+Engineered metrics:
+
+- `PriceRatio`
+- `CloseToOriginalListRatio`
+- `PricePerSqFt`
+- `DaysOnMarketMetric`
+- `Year`
+- `Month`
+- `YrMo`
+- `ListingToContractDays`
+- `ContractToCloseDays`
+
+Formulas:
+
+- `PriceRatio = ClosePrice / OriginalListPrice`
+- `CloseToOriginalListRatio = ClosePrice / OriginalListPrice`
+- `PricePerSqFt = ClosePrice / LivingArea`
+- `ListingToContractDays = PurchaseContractDate - ListingContractDate`
+- `ContractToCloseDays = CloseDate - PurchaseContractDate`
+
+Additional work:
+
+- Generated a sample output table showing engineered metrics
+- Produced summary statistics for the new features
+- Created a segmented county market summary
+- Calculated:
+  - Units sold
+  - Median close price
+  - Median price per square foot
+  - Average price ratio
+  - Average days on market
+
+Outputs:
+
+- `featured_listings.csv`
+- `featured_sold.csv`
+- `county_market_summary.csv`
+
+---
+
 ## Technologies
 
 - Python
 - Pandas
+- NumPy
 - Matplotlib
 - Git
 - GitHub
@@ -234,6 +281,7 @@ No rows were permanently removed during this phase. Data-quality issues were pre
 - ✅ Weeks 2–3 Complete
 - ✅ Mortgage Rate Enrichment Complete
 - ✅ Weeks 4–5 Complete
+- ✅ Week 6 Complete
 
 Current MLS coverage:
 
@@ -243,15 +291,14 @@ Current MLS coverage:
 
 ## Next Steps
 
-- Week 6: Feature engineering and market metrics
-- Create price ratio and price-per-square-foot metrics
-- Create Year, Month, and Year-Month fields
-- Calculate listing-to-contract and contract-to-close durations
-- Produce segmented market summary tables
-- Prepare analysis-ready datasets for Tableau dashboard development
+- Week 7: IQR-based outlier detection
+- Add outlier flag columns
+- Save full flagged and clean filtered datasets
+- Compare dataset size and median values before and after filtering
+- Weeks 8–10: Tableau dashboard development
+- Weeks 11–12: Market intelligence report and final presentation
 
 ---
-
 
 # Notes
 
