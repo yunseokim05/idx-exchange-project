@@ -1,258 +1,253 @@
-# IDX Exchange Project
+# IDX Exchange MLS Analytics Project
 
 ## Overview
 
-This project is part of my Data Analyst Internship at IDX Exchange.
+This project was completed as part of the IDX Exchange Data Analyst Internship Program.
 
-The objective is to build an end-to-end real estate analytics pipeline using California MLS residential property data. The project covers data extraction, aggregation, validation, exploratory data analysis (EDA), mortgage rate enrichment, data cleaning, feature engineering, and market metric development to prepare analysis-ready datasets for Tableau dashboards and market intelligence.
+The objective is to transform raw MLS transaction data into an analysis-ready housing market dataset through a structured data engineering and analytics pipeline. The workflow includes data aggregation, validation, exploratory analysis, mortgage rate enrichment, data cleaning, feature engineering, school district mapping, and outlier detection.
 
----
+Dataset coverage:
 
-## Project Objectives
-
-- Extract monthly MLS Listing and Sold datasets
-- Aggregate monthly datasets into master files
-- Filter Residential properties only
-- Validate dataset quality
-- Perform exploratory data analysis
-- Enrich datasets with 30-Year Fixed Mortgage Rates from FRED
-- Clean and standardize MLS data
-- Engineer housing market metrics
-- Prepare analysis-ready datasets for Tableau dashboard development
+- January 2024 – June 2026
+- California Residential MLS Listings and Sold Transactions
+- Mortgage rate enrichment from FRED (MORTGAGE30US)
 
 ---
 
-## Repository Structure
+## Project Pipeline
 
-| File | Description |
-|------|-------------|
-| `crmls_listed.py` | Download monthly MLS Listing datasets |
-| `crmls_sold.py` | Download monthly MLS Sold datasets |
-| `week1_aggregate.py` | Combine monthly CSV files and filter Residential properties |
-| `week2_validation.py` | Dataset validation and missing value analysis |
-| `week3_eda.py` | Exploratory Data Analysis |
-| `week3_mortgage_merge.py` | Merge monthly mortgage rates from FRED |
-| `week4_cleaning.py` | Weeks 4–5 data cleaning, datatype conversion, validation flags, and geographic and timeline quality checks |
-| `week6_feature_engineering.py` | Feature engineering, market metrics, and segmented county analysis |
-| `README.md` | Project documentation |
+### Week 0 – MLS Data Pipeline Orientation
 
----
+Reviewed the MLS extraction process and dataset structure.
 
-## Data Coverage
+Completed:
 
-**January 2024 – June 2026**
+- Downloaded monthly MLS datasets from FTP
+- Reviewed Trestle Property Metadata
+- Verified extraction scripts:
+  - `crmls_listed.py`
+  - `crmls_sold.py`
 
-Datasets included:
+Source files:
 
-- MLS Listings
-- MLS Sold Transactions
+- `CRMLSListingYYYYMM.csv`
+- `CRMLSSoldYYYYMM.csv`
+
+Coverage:
+
+- 202401 – 202606
 
 ---
 
-## Current Dataset Summary
+### Week 1 – Monthly Dataset Aggregation
 
-### Listings
+Script:
 
-- Residential properties only
-- **610,035 records**
-- **84 original columns**
+- `week1_aggregate.py`
 
-### Sold
+Tasks completed:
 
-- Residential properties only
-- **448,022 records**
-- **84 original columns**
+- Loaded all monthly MLS files
+- Concatenated monthly datasets
+- Filtered PropertyType = Residential
+- Generated combined datasets
 
-Additional validation and engineered feature columns are added during the cleaning and feature engineering stages.
+Outputs:
+
+- `listings.csv`
+- `sold.csv`
+
+Dataset counts:
+
+| Dataset | Rows |
+|----------|----------:|
+| Listings (Residential) | 610,035 |
+| Sold (Residential) | 448,022 |
+
+Skills:
+
+- Multi-file ingestion
+- Dataset aggregation
+- Residential filtering
 
 ---
 
-## Project Workflow
+### Week 2 – Dataset Validation
 
-### Week 0 — MLS Pipeline Orientation
+Script:
 
-- Download monthly MLS datasets
-- Review Trestle Property Metadata
-- Understand API authentication and pagination
-- Review monthly extraction workflow
-- Confirm monthly Listing and Sold files are available
+- `week2_validation.py`
 
-### Week 1 — Dataset Aggregation
+Tasks completed:
 
-- Combine monthly Listing datasets from January 2024 through June 2026
-- Combine monthly Sold datasets from January 2024 through June 2026
-- Filter both datasets to `PropertyType == "Residential"`
-- Confirm row counts before and after filtering
-- Export:
-  - `listings.csv`
-  - `sold.csv`
-
-### Weeks 2–3 — Validation and Exploratory Data Analysis
-
-Performed:
-
-- Dataset structure validation
-- Row and column verification
+- Dataset structure review
+- Column data type inspection
 - Property type validation
 - Missing value analysis
-- High-null column identification
-- Numeric datatype review
-- Numeric distribution summaries
-- Percentile analysis
+- Missing percentage calculations
+- 90%+ missing column identification
+- Core numeric distribution summaries:
+  - ClosePrice
+  - LivingArea
+  - DaysOnMarket
+
+Outputs:
+
+- `validated_listings.csv`
+- `validated_sold.csv`
+- `listings_missing_report.csv`
+- `sold_missing_report.csv`
+
+Skills:
+
+- Data validation
+- Missing value assessment
+- Dataset profiling
+
+---
+
+### Week 3 – Exploratory Data Analysis (EDA)
+
+Script:
+
+- `week3_eda.py`
+
+Tasks completed:
+
 - Histograms
 - Boxplots
-- Extreme outlier inspection
+- Percentile analysis
+- Distribution analysis
 
-Numeric fields analyzed:
+Analyzed:
 
-- `ClosePrice`
-- `ListPrice`
-- `OriginalListPrice`
-- `LivingArea`
-- `LotSizeAcres`
-- `BedroomsTotal`
-- `BathroomsTotalInteger`
-- `DaysOnMarket`
-- `YearBuilt`
+- ClosePrice
+- ListPrice
+- OriginalListPrice
+- LivingArea
+- LotSizeAcres
+- BedroomsTotal
+- BathroomsTotalInteger
+- DaysOnMarket
+- YearBuilt
 
-Additional market analysis:
+Business questions answered:
 
-- Average vs. median Close Price
+- Residential property share
+- Average and median close prices
 - Days on Market distribution
-- Homes sold above, below, or at list price
-- Date consistency validation
-- Top counties by median Close Price
+- Above-list vs below-list sales
+- Date consistency issues
+- Highest median-price counties
+
+Outputs:
+
+- Histogram visualizations
+- Boxplot visualizations
+
+Skills:
+
+- Exploratory data analysis
+- Distribution analysis
+- Outlier identification
 
 ---
 
-## Mortgage Rate Enrichment
+### Week 3 – Mortgage Rate Enrichment
 
-Fetched the **30-Year Fixed Mortgage Rate (`MORTGAGE30US`)** from Federal Reserve Economic Data (FRED).
+Script:
 
-Workflow:
+- `week3_mortgage_merge.py`
 
-- Download weekly mortgage rate observations
-- Convert weekly observations to monthly averages
-- Create Year-Month join keys
-- Merge rates onto the Listings dataset using `ListingContractDate`
-- Merge rates onto the Sold dataset using `CloseDate`
-- Validate merge completeness
-- Export:
-  - `listings_with_rates.csv`
-  - `sold_with_rates.csv`
+Tasks completed:
 
-Validation results:
+- Fetched FRED MORTGAGE30US series
+- Converted weekly data to monthly averages
+- Created Year-Month join keys
+- Merged mortgage rates onto MLS datasets
+- Validated merge completeness
 
-- Listings missing mortgage rates: **0**
-- Sold missing mortgage rates: **0**
+Outputs:
+
+- `listings_with_rates.csv`
+- `sold_with_rates.csv`
+
+Validation:
+
+- Listings missing rates: 0
+- Sold missing rates: 0
+
+Skills:
+
+- API data integration
+- Time-series resampling
+- External economic data enrichment
 
 ---
 
-## Weeks 4–5 — Data Cleaning and Preparation
+### Week 4–5 – Data Cleaning & Preparation
 
-Implemented:
+Script:
 
-- Converted date fields to `datetime`
-- Converted key numeric fields to numeric datatypes
-- Preserved original records while adding data-quality flags
-- Validated transaction timeline consistency
-- Validated geographic coordinate quality
-- Confirmed key datatypes after conversion
-- Printed before and after row counts
-- Generated data-quality summaries
-- Exported cleaned, analysis-ready datasets
+- `week4_cleaning.py`
 
-Date fields standardized:
+Tasks completed:
 
-- `CloseDate`
-- `PurchaseContractDate`
-- `ListingContractDate`
-- `ContractStatusChangeDate`
+- Datetime conversion
+- Numeric field conversion
+- Data quality validation
+- Date consistency checks
+- Geographic validation checks
 
-Numeric fields standardized:
+Quality flags created:
 
-- `ClosePrice`
-- `ListPrice`
-- `OriginalListPrice`
-- `LivingArea`
-- `LotSizeAcres`
-- `BedroomsTotal`
-- `BathroomsTotalInteger`
-- `DaysOnMarket`
-- `Latitude`
-- `Longitude`
-
-Generated validation flags:
-
-- `invalid_closeprice_flag`
-- `invalid_livingarea_flag`
-- `negative_dom_flag`
-- `negative_bedrooms_flag`
-- `negative_bathrooms_flag`
-- `listing_after_close_flag`
-- `purchase_after_close_flag`
-- `negative_timeline_flag`
-- `missing_coordinate_flag`
-- `zero_coordinate_flag`
-- `positive_longitude_flag`
-- `out_of_state_coordinate_flag`
+- invalid_closeprice_flag
+- invalid_livingarea_flag
+- negative_dom_flag
+- negative_bedrooms_flag
+- negative_bathrooms_flag
+- listing_after_close_flag
+- purchase_after_close_flag
+- negative_timeline_flag
+- missing_coordinate_flag
+- zero_coordinate_flag
+- positive_longitude_flag
+- out_of_state_coordinate_flag
 
 Outputs:
 
 - `cleaned_listings.csv`
 - `cleaned_sold.csv`
 
-Weeks 4–5 row counts:
+Skills:
 
-### Cleaned Listings
-
-- Before cleaning: **610,035**
-- After cleaning: **610,035**
-
-### Cleaned Sold
-
-- Before cleaning: **448,022**
-- After cleaning: **448,022**
-
-No rows were permanently removed during this phase. Data-quality issues were preserved through validation flags for transparency and later review.
+- Data cleaning
+- Quality assurance
+- Geographic validation
 
 ---
 
-## Week 6 — Feature Engineering and Market Metrics
+### Week 6 – Feature Engineering
 
-Created the housing market metrics required for downstream analysis and Tableau development.
+Script:
+
+- `week6_feature_engineering.py`
 
 Engineered metrics:
 
-- `PriceRatio`
-- `CloseToOriginalListRatio`
-- `PricePerSqFt`
-- `DaysOnMarketMetric`
-- `Year`
-- `Month`
-- `YrMo`
-- `ListingToContractDays`
-- `ContractToCloseDays`
+- PriceRatio
+- CloseToOriginalListRatio
+- PricePerSqFt
+- DaysOnMarketMetric
+- Year
+- Month
+- YrMo
+- ListingToContractDays
+- ContractToCloseDays
 
-Formulas:
+Segment analysis:
 
-- `PriceRatio = ClosePrice / OriginalListPrice`
-- `CloseToOriginalListRatio = ClosePrice / OriginalListPrice`
-- `PricePerSqFt = ClosePrice / LivingArea`
-- `ListingToContractDays = PurchaseContractDate - ListingContractDate`
-- `ContractToCloseDays = CloseDate - PurchaseContractDate`
-
-Additional work:
-
-- Generated a sample output table showing engineered metrics
-- Produced summary statistics for the new features
-- Created a segmented county market summary
-- Calculated:
-  - Units sold
-  - Median close price
-  - Median price per square foot
-  - Average price ratio
-  - Average days on market
+- County-level market summary
 
 Outputs:
 
@@ -260,43 +255,128 @@ Outputs:
 - `featured_sold.csv`
 - `county_market_summary.csv`
 
+Skills:
+
+- Feature engineering
+- Housing market analytics
+- Time-series metric creation
+
 ---
 
-## Technologies
+### Week 6 – School District Mapping
+
+Script:
+
+- `week6_school_district_mapping.py`
+
+Tasks completed:
+
+- Downloaded California School District boundaries
+- Filtered Unified School Districts
+- Converted polygons to EPSG:4326
+- Performed spatial joins using Latitude and Longitude
+- Added school district information to MLS records
+
+Results:
+
+| Dataset | Match Rate |
+|----------|----------:|
+| Listings | 66.80% |
+| Sold | 73.19% |
+
+Outputs:
+
+- `featured_listings_with_districts.csv`
+- `featured_sold_with_districts.csv`
+
+Skills:
+
+- GeoPandas
+- Spatial joins
+- Geospatial analytics
+
+---
+
+### Week 7 – Outlier Detection & Data Quality
+
+Script:
+
+- `week7_outlier_detection.py`
+
+Method:
+
+- Interquartile Range (IQR)
+
+Fields analyzed:
+
+- ClosePrice
+- LivingArea
+- DaysOnMarket
+
+Generated:
+
+- Individual outlier flags
+- Business-rule validation flags
+- Overall outlier indicators
+
+Listings:
+
+- Rows before filtering: 610,035
+- Rows after filtering: 523,436
+- Rows removed: 86,599
+
+Sold:
+
+- Rows before filtering: 448,022
+- Rows after filtering: 377,495
+- Rows removed: 70,527
+
+Outputs:
+
+- `flagged_listings.csv`
+- `flagged_sold.csv`
+- `filtered_listings.csv`
+- `filtered_sold.csv`
+
+Skills:
+
+- IQR-based outlier detection
+- Statistical data quality analysis
+- Flagged vs filtered dataset design
+
+---
+
+## Current Project Status
+
+Completed:
+
+- Week 0
+- Week 1
+- Week 2
+- Week 3 EDA
+- Week 3 Mortgage Rate Enrichment
+- Week 4–5 Cleaning
+- Week 6 Feature Engineering
+- Week 6 School District Mapping
+- Week 7 Outlier Detection
+
+Next Phase:
+
+- Weeks 8–10 Tableau Dashboard Development
+- Weeks 11–12 Market Intelligence Report and Presentation
+
+---
+
+## Technologies Used
 
 - Python
 - Pandas
 - NumPy
+- GeoPandas
 - Matplotlib
-- Git
-- GitHub
-- Tableau Public
-
----
-
-## Current Progress
-
-- ✅ Week 0 Complete
-- ✅ Week 1 Complete
-- ✅ Weeks 2–3 Complete
-- ✅ Mortgage Rate Enrichment Complete
-- ✅ Weeks 4–5 Complete
-- ✅ Week 6 Complete
-
-Current MLS coverage:
-
-**202401 – 202606**
-
----
-
-## Next Steps
-
-- Week 7: IQR-based outlier detection
-- Add outlier flag columns
-- Save full flagged and clean filtered datasets
-- Compare dataset size and median values before and after filtering
-- Weeks 8–10: Tableau dashboard development
-- Weeks 11–12: Market intelligence report and final presentation
+- FRED Economic Data
+- Git / GitHub
+- Tableau Public (upcoming)
 
 ---
 
