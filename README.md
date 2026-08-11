@@ -346,37 +346,87 @@ Skills:
 
 ---
 
-## Current Project Status
+## Week 8 — Tableau Market Analysis Dashboard
 
-Completed:
+Developed an interactive Market Analysis dashboard in Tableau using the final filtered MLS datasets.
 
-- Week 0
-- Week 1
-- Week 2
-- Week 3 EDA
-- Week 3 Mortgage Rate Enrichment
-- Week 4–5 Cleaning
-- Week 6 Feature Engineering
-- Week 6 School District Mapping
-- Week 7 Outlier Detection
+Data sources:
 
-Next Phase:
+- `filtered_sold.csv`
+- `filtered_listings.csv`
 
-- Weeks 8–10 Tableau Dashboard Development
-- Weeks 11–12 Market Intelligence Report and Presentation
+### Market Analysis Visualizations
+
+Created the following monthly market trend analyses:
+
+- Monthly Median Close Price
+- Average Days on Market
+- Average Close-to-Original-List Price Ratio
+- Monthly Closed Sales
+- Monthly New Listings
+- Median Price per Square Foot Trend
+
+The dashboard covers the market period beginning January 2024 through the latest available MLS data.
+
+### Interactive Filters
+
+Implemented dashboard-level filters for:
+
+- City
+- County
+- ZIP Code
+- Property SubType
+
+Filters were configured across the dashboard worksheets and tested to confirm that all visualizations respond correctly to user selections.
+
+### Tableau Dashboard
+
+Built the **Market Analysis Dashboard** by combining the market trend worksheets into a single interactive dashboard.
+
+The completed dashboard was:
+
+- Saved as a Tableau workbook
+- Published to Tableau Public
+- Configured for interactive market exploration by geography and property type
 
 ---
 
-## Technologies Used
+## Current Progress
 
-- Python
-- Pandas
-- NumPy
-- GeoPandas
-- Matplotlib
-- FRED Economic Data
-- Git / GitHub
-- Tableau Public (upcoming)
+✅ Week 0 — MLS Pipeline Orientation
+
+✅ Week 1 — Dataset Aggregation
+
+✅ Week 2 — Data Validation & Missing Value Analysis
+
+✅ Week 3 — Exploratory Data Analysis & Mortgage Rate Enrichment
+
+✅ Weeks 4–5 — Data Cleaning & Preparation
+
+✅ Week 6 — Feature Engineering & School District Mapping
+
+✅ Week 7 — Outlier Detection & Analysis-Ready Dataset Preparation
+
+✅ Week 8 — Tableau Market Analysis Dashboard
+
+Current MLS Coverage:
+
+**January 2024 – June 2026**
+
+---
+
+## Next Steps
+
+### Weeks 9–10 — Competitive Analysis & Tableau Development
+
+- Analyze top listing agents
+- Analyze top listing offices
+- Build ZIP Code-level market heat maps
+- Visualize median close price by ZIP Code
+- Visualize homes sold by ZIP Code
+- Develop an additional competitive analysis dashboard
+- Complete and refine Tableau dashboards
+- Prepare final Tableau workbook deliverables
 
 ---
 
