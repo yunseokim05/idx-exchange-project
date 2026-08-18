@@ -391,15 +391,87 @@ The completed dashboard was:
 
 ---
 
+## Weeks 9–10 — Tableau Competitive Analysis
+
+Developed an interactive Competitive Analysis dashboard using the final filtered sold dataset.
+
+Data source:
+
+- `filtered_sold.csv`
+
+### Competitive Analysis Visualizations
+
+Created the following analyses:
+
+- Top 100 Listing Agents by Sales Volume and Units
+- Top 100 Listing Offices by Sales Volume and Units
+- ZIP Code Median Close Price Heat Map
+- ZIP Code Homes Sold Heat Map
+
+### Interactive Filters
+
+Implemented geographic and property-level filters including:
+
+- City
+- County
+- ZIP Code
+- Property SubType
+
+The ZIP Code heat maps also support time-based filtering for market analysis across the project period.
+
+### Competitive Landscape Analysis
+
+Developed an additional competitive analysis dashboard comparing:
+
+- Top 20 Listing Agents by Sales Volume
+- Top 20 Listing Offices by Sales Volume
+
+The dashboard provides an interactive view of leading agents and brokerages across different geographic markets and property types.
+
+### Tableau Dashboard
+
+The completed Competitive Analysis workbook was:
+
+- Saved as a Tableau workbook
+- Published to Tableau Public
+- Configured for interactive competitive and geographic analysis
+
+---
+
+## Weeks 11–12 — Market Intelligence & Final Presentation
+
+Completed a market intelligence analysis focused on Los Angeles County using insights from the Market Analysis and Competitive Analysis dashboards.
+
+### Market Intelligence Report
+
+Prepared a one-page report covering:
+
+- Market Overview
+- Pricing Trends
+- Market Activity
+- Competitive Landscape
+- Key Takeaways
+
+The analysis examined home price trends, days on market, price per square foot, sold-to-list performance, listing and sales activity, and leading agents and brokerages.
+
+### Final Presentation
+
+Prepared a five-minute walkthrough of the Tableau dashboards highlighting key housing market trends and competitive insights.
+
+Final deliverables:
+
+- Market Analysis Tableau Dashboard
+- Competitive Analysis Tableau Dashboard
+- 1-Page Los Angeles County Market Intelligence Report
+- 5-Minute Dashboard Presentation
+
 ## Current Progress
 
 ✅ Week 0 — MLS Pipeline Orientation
 
 ✅ Week 1 — Dataset Aggregation
 
-✅ Week 2 — Data Validation & Missing Value Analysis
-
-✅ Week 3 — Exploratory Data Analysis & Mortgage Rate Enrichment
+✅ Weeks 2–3 — Data Validation, EDA & Mortgage Rate Enrichment
 
 ✅ Weeks 4–5 — Data Cleaning & Preparation
 
@@ -407,7 +479,9 @@ The completed dashboard was:
 
 ✅ Week 7 — Outlier Detection & Analysis-Ready Dataset Preparation
 
-✅ Week 8 — Tableau Market Analysis Dashboard
+✅ Weeks 8–10 — Tableau Market & Competitive Analysis Dashboards
+
+✅ Weeks 11–12 — Market Intelligence Report & Final Presentation
 
 Current MLS Coverage:
 
@@ -415,18 +489,20 @@ Current MLS Coverage:
 
 ---
 
-## Next Steps
+## Final Deliverables
 
-### Weeks 9–10 — Competitive Analysis & Tableau Development
+- `market_analysis.twbx`
+- `competitive_analysis.twbx`
+- Market Analysis Dashboard published to Tableau Public
+- Competitive Analysis Dashboard published to Tableau Public
+- 1-Page Los Angeles County Market Intelligence Report
+- 5-Minute Final Presentation
 
-- Analyze top listing agents
-- Analyze top listing offices
-- Build ZIP Code-level market heat maps
-- Visualize median close price by ZIP Code
-- Visualize homes sold by ZIP Code
-- Develop an additional competitive analysis dashboard
-- Complete and refine Tableau dashboards
-- Prepare final Tableau workbook deliverables
+---
+
+## Tableau Public
+
+Interactive dashboards are available on Tableau Public: https://public.tableau.com/app/profile/yunseo.kim2672
 
 ---
 
