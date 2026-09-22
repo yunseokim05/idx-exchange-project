@@ -81,10 +81,6 @@ Raw MLS files, credentials, FTP information, and confidential company data are n
 
 ## Detailed Weekly Progress
 
-여기에 기존의 Week 0부터 Week 12까지 내용을 그대로 붙여넣기
-
-</details>
-
 ### Week 0 – MLS Data Pipeline Orientation
 
 Reviewed the MLS extraction process and dataset structure.
@@ -557,6 +553,7 @@ Current MLS Coverage:
 **January 2024 – June 2026**
 
 ---
+</details>
 
 ## Final Deliverables
 
