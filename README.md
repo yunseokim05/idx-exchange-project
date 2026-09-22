@@ -26,9 +26,10 @@ Analyzes leading listing agents and offices by transaction volume and units sold
 
 ## Key Findings
 
-- Los Angeles County's median residential sale price changed from **$[시작가격]** in January 2024 to **$[종료가격]** in June 2026, representing a **[증감률]% increase/decrease**.
-- Average Days on Market changed from **[시작일수] days** to **[종료일수] days**, indicating that homes were selling **faster/slower** by the end of the analysis period.
-- The top 20 listing agents generated approximately **$[금액]** in combined sales volume and represented **[비율]%** of the analyzed Los Angeles County market.
+- Los Angeles County median home prices remained relatively stable at approximately **$800,000–$900,000**, while the median price per square foot stayed around **$560–$610** throughout the analysis period.
+- Average Days on Market ranged from approximately **20 days to the mid-30s**. After increasing in early 2026, it declined to the mid-20s, indicating that homes had recently begun selling faster.
+- Monthly closed sales fell during late 2025 and early 2026 before recovering to approximately **3,500 homes**, while new listings increased to approximately **5,500–6,000 per month**.
+- Compass led Los Angeles County brokerages with approximately **$7.70 billion** in sales volume, followed by Coldwell Banker Realty with **$4.10 billion** and Equity Union with **$1.80 billion**.
 
 ## Technologies
 
@@ -47,7 +48,7 @@ Analyzes leading listing agents and offices by transaction volume and units sold
 |---|---:|
 | Listings | 610,035 |
 | Sold Transactions | 448,022 |
-| Total | 1,058,057 |
+| **Total** | **1,058,057** |
 
 - **Geographic coverage:** California
 - **Time period:** January 2024–June 2026
@@ -69,8 +70,6 @@ Analyzes leading listing agents and offices by transaction volume and units sold
 
 Raw MLS files, credentials, FTP information, and confidential company data are not included in this repository. The repository contains only approved project documentation, analytical code, and nonconfidential outputs.
 
-
-## Project Pipeline
 
 <details>
 <summary><strong>View Detailed Weekly Project Progress</strong></summary>
