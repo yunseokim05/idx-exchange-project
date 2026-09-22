@@ -1,20 +1,89 @@
 # IDX Exchange MLS Analytics Project
 
-## Overview
+Processed and analyzed over **1.05 million California residential MLS records** from January 2024 to June 2026 using Python, pandas, GeoPandas, FRED data, and Tableau to build interactive market and competitive intelligence dashboards.
 
-This project was completed as part of the IDX Exchange Data Analyst Internship Program.
+## Project Summary
 
-The objective is to transform raw MLS transaction data into an analysis-ready housing market dataset through a structured data engineering and analytics pipeline. The workflow includes data aggregation, validation, exploratory analysis, mortgage rate enrichment, data cleaning, feature engineering, school district mapping, and outlier detection.
+This project was completed during my Data Analyst Internship at IDX Exchange. I developed an end-to-end analytics workflow that transformed raw monthly MLS files into analysis-ready datasets and interactive Tableau dashboards.
 
-Dataset coverage:
+The workflow included data aggregation, validation, cleaning, feature engineering, mortgage-rate integration, geospatial school-district mapping, outlier detection, market analysis, and competitive intelligence.
 
-- January 2024 – June 2026
-- California Residential MLS Listings and Sold Transactions
-- Mortgage rate enrichment from FRED (MORTGAGE30US)
+## Dashboard Preview
 
----
+### Market Analysis Dashboard
+
+Analyzes housing-market performance through median prices, days on market, price per square foot, listing activity, closed sales, and sold-to-list price ratios.
+
+[View the Market Analysis Dashboard](여기에_Market_Analysis_직접링크)
+
+![Market Analysis Dashboard](images/market-analysis-dashboard.png)
+
+### Competitive Analysis Dashboard
+
+Analyzes leading listing agents and offices by transaction volume and units sold, along with ZIP-code-level pricing and sales activity.
+
+[View the Competitive Analysis Dashboard](여기에_Competitive_Analysis_직접링크)
+
+![Competitive Analysis Dashboard](images/competitive-analysis-dashboard.png)
+
+[View My Tableau Public Profile](https://public.tableau.com/app/profile/yunseo.kim2672)
+
+## Key Findings
+
+- Los Angeles County's median residential sale price changed from **$[시작가격]** in January 2024 to **$[종료가격]** in June 2026, representing a **[증감률]% increase/decrease**.
+- Average Days on Market changed from **[시작일수] days** to **[종료일수] days**, indicating that homes were selling **faster/slower** by the end of the analysis period.
+- The top 20 listing agents generated approximately **$[금액]** in combined sales volume and represented **[비율]%** of the analyzed Los Angeles County market.
+
+## Technologies
+
+- Python
+- pandas
+- NumPy
+- GeoPandas
+- Tableau
+- FRED API
+- FTP/FileZilla
+- Jupyter Notebook
+
+## Dataset Scale
+
+| Dataset | Residential Records |
+|---|---:|
+| Listings | 610,035 |
+| Sold Transactions | 448,022 |
+| Total | 1,058,057 |
+
+- **Geographic coverage:** California
+- **Time period:** January 2024–June 2026
+- **External data:** Freddie Mac 30-Year Fixed Rate Mortgage Average from FRED
+- **Primary sources:** CRMLS listing and sold transaction files
+
+## Methodology
+
+1. Downloaded and aggregated monthly MLS files.
+2. Validated data types, missing values, dates, prices, and geographic fields.
+3. Integrated monthly mortgage-rate data from FRED.
+4. Engineered housing-market and transaction-timeline metrics.
+5. Mapped listings to California unified school districts using GeoPandas.
+6. Applied IQR-based and business-rule outlier detection.
+7. Built Tableau market and competitive intelligence dashboards.
+8. Prepared a Los Angeles County market intelligence report and final presentation.
+
+## Data Privacy
+
+Raw MLS files, credentials, FTP information, and confidential company data are not included in this repository. The repository contains only approved project documentation, analytical code, and nonconfidential outputs.
+
 
 ## Project Pipeline
+
+<details>
+<summary><strong>View Detailed Weekly Project Progress</strong></summary>
+
+## Detailed Weekly Progress
+
+여기에 기존의 Week 0부터 Week 12까지 내용을 그대로 붙여넣기
+
+</details>
 
 ### Week 0 – MLS Data Pipeline Orientation
 
