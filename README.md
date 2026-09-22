@@ -14,17 +14,13 @@ The workflow included data aggregation, validation, cleaning, feature engineerin
 
 Analyzes housing-market performance through median prices, days on market, price per square foot, listing activity, closed sales, and sold-to-list price ratios.
 
-[View the Market Analysis Dashboard](여기에_Market_Analysis_직접링크)
-
-![Market Analysis Dashboard](images/market-analysis-dashboard.png)
+[View the Market Analysis Dashboard](https://public.tableau.com/app/profile/yunseo.kim2672/viz/market_analysis_17864911773400/MarketAnalysisDashboard)
 
 ### Competitive Analysis Dashboard
 
 Analyzes leading listing agents and offices by transaction volume and units sold, along with ZIP-code-level pricing and sales activity.
 
-[View the Competitive Analysis Dashboard](여기에_Competitive_Analysis_직접링크)
-
-![Competitive Analysis Dashboard](images/competitive-analysis-dashboard.png)
+[View the Competitive Analysis Dashboard](https://public.tableau.com/app/profile/yunseo.kim2672/viz/competitive_analysis_17870213439390/CompetitveLandscapeAnalysis)
 
 [View My Tableau Public Profile](https://public.tableau.com/app/profile/yunseo.kim2672)
 
